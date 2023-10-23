@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "731009808180",
+    "project_id": "autobarn-57cbc",
+    "storage_bucket": "autobarn-57cbc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:731009808180:android:8b364b83b457d7c93ed761",
+        "android_client_info": {
+          "package_name": "com.example.auto_barn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBL_HtdmtxVIk57jFhSDze11ktBJe_EyPw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
