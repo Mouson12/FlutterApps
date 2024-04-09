@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:weather_app_new/current_cubit.dart';
 import 'package:weather_app_new/current_model.dart';
 import 'package:weather_app_new/features/current/current_weather.dart';
+import 'package:weather_app_new/widgets/easy_button.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,10 +17,11 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late Timer _timer;
+  var city = 'Warsaw';
 
   Future<void> getCurrent() async {
     final currentCubit = context.read<CurrentCubit>();
-    await currentCubit.getCurrent('Warsaw');
+    await currentCubit.getCurrent(city);
   }
 
   Color getRandomColor() {
@@ -58,9 +60,18 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Current Weather'),
+        title: Text('$city'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              showAlert(context);
+            },
+          )
+        ],
         centerTitle: true,
       ),
+      drawer: Drawer(),
       body: _buildBody(state),
     );
   }
@@ -100,50 +111,241 @@ class _HomePageState extends State<HomePage> {
             return const SizedBox.shrink();
           }
 
-          return Container(
-            width: double.infinity,
-            height: 200,
-            margin: const EdgeInsets.only(
-              left: 20,
-              right: 20,
-              bottom: 20,
-            ),
-            padding: const EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              color: getRandomColor(),
-              borderRadius: BorderRadius.circular(20),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Text(
-                  'Id: ${current.id ?? "N/A"}',
-                  style: const TextStyle(color: Colors.white),
+          return Column(
+            children: [
+              Container(
+                width: double.infinity,
+                height: 200,
+                margin: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                  bottom: 20,
                 ),
-                Text(
-                  'City: ${current.city ?? "N/A"}',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontStyle: FontStyle.italic,
-                  ),
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: getRandomColor(),
+                  borderRadius: BorderRadius.circular(20),
                 ),
-                Text(
-                  'Temp: ${current.tempC ?? "N/A"}',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontStyle: FontStyle.italic,
-                  ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      'Id: ${current.id ?? "N/A"}',
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      'City: ${current.city ?? "N/A"}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    Text(
+                      'Temp: ${current.tempC ?? "N/A"}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    Text(
+                      'Update Time: ${current.lastUpdated ?? "N/A"}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ],
                 ),
-                Text(
-                  'Update Time: ${current.lastUpdated ?? "N/A"}',
-                  style: const TextStyle(
-                    color: Colors.white,
-                    fontStyle: FontStyle.italic,
-                  ),
+              ),
+              Container(
+                width: double.infinity,
+                height: 200,
+                margin: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                  bottom: 20,
                 ),
-              ],
-            ),
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: getRandomColor(),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      'Id: ${current.id ?? "N/A"}',
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      'City: ${current.city ?? "N/A"}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    Text(
+                      'Temp: ${current.tempC ?? "N/A"}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    Text(
+                      'Update Time: ${current.lastUpdated ?? "N/A"}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                height: 200,
+                margin: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                  bottom: 20,
+                ),
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: getRandomColor(),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      'Id: ${current.id ?? "N/A"}',
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      'City: ${current.city ?? "N/A"}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    Text(
+                      'Temp: ${current.tempC ?? "N/A"}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    Text(
+                      'Update Time: ${current.lastUpdated ?? "N/A"}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                height: 200,
+                margin: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                  bottom: 20,
+                ),
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: getRandomColor(),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      'Id: ${current.id ?? "N/A"}',
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      'City: ${current.city ?? "N/A"}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    Text(
+                      'Temp: ${current.tempC ?? "N/A"}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    Text(
+                      'Update Time: ${current.lastUpdated ?? "N/A"}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: double.infinity,
+                height: 200,
+                margin: const EdgeInsets.only(
+                  left: 20,
+                  right: 20,
+                  bottom: 20,
+                ),
+                padding: const EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: getRandomColor(),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Text(
+                      'Id: ${current.id ?? "N/A"}',
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      'City: ${current.city ?? "N/A"}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    Text(
+                      'Temp: ${current.tempC ?? "N/A"}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                    Text(
+                      'Update Time: ${current.lastUpdated ?? "N/A"}',
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontStyle: FontStyle.italic,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  showAlert(context);
+                },
+                child: const Text('Show Alert'),
+              ),
+            ],
+            
           );
         },
       ),

@@ -13,7 +13,7 @@ class CurrentRepository {
       : _currentBox = currentBox;
 
   Future<List<CurrentModel>> getCurrent(String place) async {
-    final String apiKey = "9a75cb226f8240d28f8141123240303";
+    final String apiKey = "175f13971e044242a1c214546240904";
     final String city = place;
     final String apiUrl =
         "http://api.weatherapi.com/v1/current.json?key=$apiKey&q=$city&aqi=yes&lang=pl";
